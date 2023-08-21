@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView } from "react-native";
 import { styles } from "../../styles";
 import SearchBar from "react-native-general-searchbar";
 import { Box, Chip, Flex, VStack } from "@react-native-material/core";
@@ -46,7 +46,7 @@ const Search: FC = () => {
                                     label={item.name}
                                     color="#9191ff"
                                     onPress={() => {
-                                        console.log(item.id);
+                                        onSubmit();
                                     }}
                                 />
                             );
