@@ -26,5 +26,8 @@ export const styles = StyleSheet.create({
         gap: 5,
         paddingLeft: 5,
         paddingRight: 5
+    },
+    listFlex: {
+        gap: 10
     }
 });

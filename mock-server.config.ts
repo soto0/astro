@@ -8,10 +8,38 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                 routes: [
                     {
                         data: [
-                            { id: 1, type: "galaxy", name: "Млечный Путь" },
-                            { id: 2, type: "galaxy", name: "Андромеда" },
-                            { id: 3, type: "galaxy", name: "Большое Магелланово Облако" },
-                            { id: 4, type: "galaxy", name: "Барнарда" },
+                            {
+                                id: 1,
+                                type: "galaxy",
+                                viewType: "Галактика",
+                                name: "Млечный Путь",
+                                image: "https://images.ctfassets.net/cnu0m8re1exe/76iARqWFwf5VQeHcy7FsYB/75246efbd9ac79410b75b5c0211723ba/shutterstock_738535111.jpg",
+                                view: "Спиральная"
+                            },
+                            {
+                                id: 2,
+                                type: "galaxy",
+                                viewType: "Галактика",
+                                name: "Андромеда",
+                                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/800px-Andromeda_Galaxy_%28with_h-alpha%29.jpg",
+                                view: "Спиральная"
+                            },
+                            {
+                                id: 3,
+                                type: "galaxy",
+                                viewType: "Галактика",
+                                name: "Большое Магелланово Облако",
+                                image: "https://cdn.eso.org/images/screen/magellan-ch17-bardon-cc.jpg",
+                                view: "Неправильная"
+                            },
+                            {
+                                id: 4,
+                                type: "galaxy",
+                                viewType: "Галактика",
+                                name: "Барнарда",
+                                image: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Barnard%27s_Galaxy.jpg",
+                                view: "Неправильная"
+                            },
                             { id: 5, type: "planet", name: "Меркурий" },
                             { id: 6, type: "planet", name: "Венера" },
                             { id: 7, type: "planet", name: "Земля" },
@@ -55,7 +83,13 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                             { id: 36, type: "constellation", name: "Лев" }
                         ]
                     }
-                ]
+                ],
+                interceptors: {
+                    response: (data: Array<any>, { request }) => {
+                        const array = data.filter((el) => el.type === request.query.type);
+                        return array;
+                    }
+                }
             }
         ]
     }

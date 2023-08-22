@@ -1,26 +1,29 @@
 import { FC, useState } from "react";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, ScrollView } from "react-native";
 import { styles } from "../../styles";
 import SearchBar from "react-native-general-searchbar";
-import { Box, Chip, Flex, VStack } from "@react-native-material/core";
+import { Avatar, Box, Chip, Flex, ListItem, VStack } from "@react-native-material/core";
+import { searchAPI } from "../../services/search";
+import { ISearch } from "../../models/ISearch";
 
 const Search: FC = () => {
     const [value, setValue] = useState<string | undefined>();
+    const [trigger, { data: list }] = searchAPI.useLazyGetSearchDataQuery();
 
     const onChange = (values: string | undefined) => {
         setValue(values);
     };
 
-    const onSubmit = () => {
-        console.log("submitted");
+    const onSubmit = (values: { type: string }) => {
+        trigger(values);
     };
 
     const chips = [
-        { id: 1, name: "Галактики" },
-        { id: 2, name: "Планеты" },
-        { id: 3, name: "Спутники" },
-        { id: 4, name: "Метеориты" },
-        { id: 5, name: "Созвездия" }
+        { id: 1, name: "Галактики", type: "galaxy" },
+        { id: 2, name: "Планеты", type: "planet" },
+        { id: 3, name: "Спутники", type: "satellite" },
+        { id: 4, name: "Метеориты", type: "meteorite" },
+        { id: 5, name: "Созвездия", type: "constellation" }
     ];
 
     return (
@@ -46,12 +49,33 @@ const Search: FC = () => {
                                     label={item.name}
                                     color="#9191ff"
                                     onPress={() => {
-                                        onSubmit();
+                                        onSubmit({ type: item.type });
                                     }}
                                 />
                             );
                         })}
                     </Flex>
+                    <ScrollView>
+                        <Flex direction="column" style={styles.listFlex}>
+                            {list &&
+                                list.map((item) => {
+                                    return (
+                                        <ListItem
+                                            overline={item.viewType}
+                                            title={item.name}
+                                            secondaryText={item.view}
+                                            leadingMode="image"
+                                            leading={
+                                                <Avatar
+                                                    image={{ uri: `${item.image}` }}
+                                                    size={80}
+                                                />
+                                            }
+                                        />
+                                    );
+                                })}
+                        </Flex>
+                    </ScrollView>
                 </VStack>
             </Box>
         </SafeAreaView>
