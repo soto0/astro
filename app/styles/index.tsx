@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
         paddingRight: 5
     },
     listFlex: {
+        paddingBottom: 460,
         gap: 10
     }
 });

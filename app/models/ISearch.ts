@@ -2,6 +2,6 @@ export interface ISearch {
     id: number;
     name: string;
     image: string;
-    view: string;
+    description: string;
     viewType: string;
 }

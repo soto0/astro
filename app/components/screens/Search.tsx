@@ -4,11 +4,11 @@ import { styles } from "../../styles";
 import SearchBar from "react-native-general-searchbar";
 import { Avatar, Box, Chip, Flex, ListItem, VStack } from "@react-native-material/core";
 import { searchAPI } from "../../services/search";
-import { ISearch } from "../../models/ISearch";
+import Loader from "../ui/loader";
 
 const Search: FC = () => {
     const [value, setValue] = useState<string | undefined>();
-    const [trigger, { data: list }] = searchAPI.useLazyGetSearchDataQuery();
+    const [trigger, { data: list, isLoading }] = searchAPI.useLazyGetSearchDataQuery();
 
     const onChange = (values: string | undefined) => {
         setValue(values);
@@ -56,25 +56,29 @@ const Search: FC = () => {
                         })}
                     </Flex>
                     <ScrollView>
-                        <Flex direction="column" style={styles.listFlex}>
-                            {list &&
-                                list.map((item) => {
-                                    return (
-                                        <ListItem
-                                            overline={item.viewType}
-                                            title={item.name}
-                                            secondaryText={item.view}
-                                            leadingMode="image"
-                                            leading={
-                                                <Avatar
-                                                    image={{ uri: `${item.image}` }}
-                                                    size={80}
-                                                />
-                                            }
-                                        />
-                                    );
-                                })}
-                        </Flex>
+                        {!isLoading ? (
+                            <Flex direction="column" style={styles.listFlex}>
+                                {list &&
+                                    list.map((item) => {
+                                        return (
+                                            <ListItem
+                                                overline={item.viewType}
+                                                title={item.name}
+                                                secondaryText={item.description}
+                                                leadingMode="image"
+                                                leading={
+                                                    <Avatar
+                                                        image={{ uri: `${item.image}` }}
+                                                        size={80}
+                                                    />
+                                                }
+                                            />
+                                        );
+                                    })}
+                            </Flex>
+                        ) : (
+                            <Loader />
+                        )}
                     </ScrollView>
                 </VStack>
             </Box>
