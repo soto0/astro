@@ -32,7 +32,8 @@ export const styles = StyleSheet.create({
         gap: 10
     },
     newsStack: {
-        paddingTop: 50
+        paddingTop: 30,
+        paddingBottom: 30
     },
     newsWrapper: {
         borderRadius: 20,
