@@ -62,5 +62,8 @@ export const styles = StyleSheet.create({
     },
     newsText: {
         paddingTop: 10
+    },
+    newsItemStack: {
+        paddingTop: 50
     }
 });

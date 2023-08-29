@@ -13,6 +13,13 @@ export const newsAPI = createApi({
                 url: "news",
                 method: "GET"
             })
+        }),
+        getNewData: build.query<INews, number>({
+            query: (id) => ({
+                url: "news",
+                method: "GET",
+                params: { id: id }
+            })
         })
     })
 });

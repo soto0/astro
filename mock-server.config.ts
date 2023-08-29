@@ -345,7 +345,16 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                             }
                         ]
                     }
-                ]
+                ],
+                interceptors: {
+                    response: (data: Array<any>, { request }) => {
+                        if (request.query.id) {
+                            return data.find((item) => item.id === Number(request.query.id));
+                        } else {
+                            return data;
+                        }
+                    }
+                }
             }
         ]
     }

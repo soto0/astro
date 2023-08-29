@@ -6,7 +6,7 @@ import { IHeader } from "../../../models/IHeader";
 
 const ItemHeader: FC<IHeader> = (props: IHeader) => {
     return (
-        <SafeAreaView style={styles.safeAreaView}>
+        <SafeAreaView style={{ ...styles.safeAreaView, height: "auto" }}>
             <AppBar
                 color="white"
                 style={styles.header}
