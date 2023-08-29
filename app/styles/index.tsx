@@ -5,6 +5,11 @@ export const styles = StyleSheet.create({
         backgroundColor: "white",
         height: "100%"
     },
+    header: {
+        shadowOpacity: 0.1,
+        paddingBottom: 5,
+        shadowColor: "#cdcdfa"
+    },
     defaultBox: {
         paddingLeft: 10,
         paddingRight: 10
