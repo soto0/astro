@@ -3,18 +3,22 @@ import { SafeAreaView, ScrollView } from "react-native";
 import { styles } from "../../styles";
 import SearchBar from "react-native-general-searchbar";
 import { Avatar, Box, Chip, Flex, ListItem, VStack } from "@react-native-material/core";
-import { searchAPI } from "../../services/search";
+import { spaceAPI } from "../../services/search";
 import Loader from "../ui/loader";
 
 const Search: FC = () => {
     const [value, setValue] = useState<string | undefined>();
-    const [trigger, { data: list, isLoading }] = searchAPI.useLazyGetSearchDataQuery();
+    const [trigger, { data: list, isLoading }] = spaceAPI.useLazyGetSpaceDataQuery();
 
     const onChange = (values: string | undefined) => {
         setValue(values);
     };
 
-    const onSubmit = (values: { type: string }) => {
+    const onSearchSubmit = () => {
+        trigger({ q: value });
+    };
+
+    const onChipsSubmit = (values: { type: string }) => {
         trigger(values);
     };
 
@@ -34,7 +38,7 @@ const Search: FC = () => {
                         <SearchBar
                             placeholder="Поиск..."
                             onChangeText={onChange}
-                            onSubmitEditing={onSubmit}
+                            onSubmitEditing={onSearchSubmit}
                             searchText={value}
                             style={{
                                 inputView: styles.searchInputView,
@@ -49,7 +53,7 @@ const Search: FC = () => {
                                     label={item.name}
                                     color="#9191ff"
                                     onPress={() => {
-                                        onSubmit({ type: item.type });
+                                        onChipsSubmit({ type: item.type });
                                     }}
                                 />
                             );
@@ -58,23 +62,22 @@ const Search: FC = () => {
                     <ScrollView>
                         {!isLoading ? (
                             <Flex direction="column" style={styles.listFlex}>
-                                {list &&
-                                    list.map((item) => {
-                                        return (
-                                            <ListItem
-                                                overline={item.viewType}
-                                                title={item.name}
-                                                secondaryText={item.description}
-                                                leadingMode="image"
-                                                leading={
-                                                    <Avatar
-                                                        image={{ uri: `${item.image}` }}
-                                                        size={80}
-                                                    />
-                                                }
-                                            />
-                                        );
-                                    })}
+                                {list?.map((item) => {
+                                    return (
+                                        <ListItem
+                                            overline={item?.viewType}
+                                            title={item?.name}
+                                            secondaryText={item?.description}
+                                            leadingMode="image"
+                                            leading={
+                                                <Avatar
+                                                    image={{ uri: `${item?.image}` }}
+                                                    size={80}
+                                                />
+                                            }
+                                        />
+                                    );
+                                })}
                             </Flex>
                         ) : (
                             <Loader />

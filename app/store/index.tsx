@@ -1,14 +1,14 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { searchAPI } from "../services/search";
+import { spaceAPI } from "../services/search";
 
 const reducers = combineReducers({
-    [searchAPI.reducerPath]: searchAPI.reducer
+    [spaceAPI.reducerPath]: spaceAPI.reducer
 });
 
 export const store = configureStore({
     reducer: reducers,
-    middleware: (getDefaultMiddleware: any) => getDefaultMiddleware().concat(searchAPI.middleware)
+    middleware: (getDefaultMiddleware: any) => getDefaultMiddleware().concat(spaceAPI.middleware)
 });
 
 export type TypeRootState = ReturnType<typeof store.getState>;

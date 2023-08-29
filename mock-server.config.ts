@@ -3,7 +3,7 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
         baseUrl: "/api",
         configs: [
             {
-                path: "/search",
+                path: "/space",
                 method: "get",
                 routes: [
                     {
@@ -293,8 +293,11 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                 ],
                 interceptors: {
                     response: (data: Array<any>, { request }) => {
-                        const array = data.filter((el) => el.type === request.query.type);
-                        return array;
+                        if (request.query.type) {
+                            return data.filter((item) => item.type === request.query.type);
+                        } else {
+                            return data.filter((item) => item.name.includes(request.query.q));
+                        }
                     }
                 }
             }

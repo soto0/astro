@@ -1,16 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { ISearch } from "../models/ISearch";
-import { SEARCH_URL } from "../constants/apis";
+import { ISpace } from "../models/ISpace";
+import { SPACE_URL } from "../constants/apis";
 
-export const searchAPI = createApi({
-    reducerPath: "searchAPI",
+export const spaceAPI = createApi({
+    reducerPath: "spaceAPI",
     baseQuery: fetchBaseQuery({
-        baseUrl: SEARCH_URL
+        baseUrl: SPACE_URL
     }),
     endpoints: (build) => ({
-        getSearchData: build.query<ISearch[], { type: string }>({
+        getSpaceData: build.query<ISpace[], { type: string } | { q: string | undefined }>({
             query: (item) => ({
-                url: "search",
+                url: "space",
                 method: "GET",
                 params: item
             })
