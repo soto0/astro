@@ -30,5 +30,31 @@ export const styles = StyleSheet.create({
     listFlex: {
         paddingBottom: 460,
         gap: 10
+    },
+    newsStack: {
+        paddingTop: 50
+    },
+    newsWrapper: {
+        borderRadius: 20,
+        padding: 20,
+        paddingBottom: 50,
+        backgroundColor: "#f5f5ff",
+        shadowColor: "#cdcdfa",
+        shadowRadius: 5,
+        shadowOpacity: 0.3
+    },
+    newsImage: {
+        width: "100%",
+        height: 250,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+    newsTitle: {
+        paddingTop: 25,
+        fontSize: 16,
+        fontWeight: "bold"
+    },
+    newsText: {
+        paddingTop: 10
     }
 });
