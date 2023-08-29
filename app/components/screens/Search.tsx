@@ -19,6 +19,7 @@ const Search: FC = () => {
     };
 
     const onChipsSubmit = (values: { type: string }) => {
+        setValue(undefined);
         trigger(values);
     };
 
