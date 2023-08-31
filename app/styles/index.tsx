@@ -64,6 +64,18 @@ export const styles = StyleSheet.create({
         paddingTop: 10
     },
     newsItemStack: {
-        paddingTop: 50
+        paddingTop: 20
+    },
+    newsTime: {
+        marginTop: 20
+    },
+    newsChipLabel: {
+        marginLeft: "auto",
+        marginRight: "auto",
+        paddingLeft: 10,
+        paddingRight: 10
+    },
+    newsChip: {
+        marginBottom: 5
     }
 });
