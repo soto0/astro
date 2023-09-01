@@ -8,12 +8,14 @@ export const spaceObjectsAPI = createApi({
         baseUrl: SPACE_URL
     }),
     endpoints: (build) => ({
-        getSpaceData: build.query<ISpaceObjects[], { type: string } | { q: string | undefined }>({
-            query: (item) => ({
-                url: "space",
-                method: "GET",
-                params: item
-            })
-        })
+        getSpaceObjects: build.query<ISpaceObjects[], { type: string } | { q: string | undefined }>(
+            {
+                query: (item) => ({
+                    url: "space",
+                    method: "GET",
+                    params: item
+                })
+            }
+        )
     })
 });
