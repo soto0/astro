@@ -3,10 +3,10 @@ import { SafeAreaView, ScrollView } from "react-native";
 import { styles } from "../../styles";
 import SearchBar from "react-native-general-searchbar";
 import { Avatar, Box, Chip, Flex, ListItem, VStack } from "@react-native-material/core";
-import { spaceAPI } from "../../services/search";
+import { spaceAPI } from "../../services/spaceObjects";
 import Loader from "../ui/loader";
 
-const Search: FC = () => {
+const SpaceObjects: FC = ({ navigation }: any) => {
     const [value, setValue] = useState<string | undefined>();
     const [chipType, setChipType] = useState<string>();
     const [trigger, { data: list, isLoading }] = spaceAPI.useLazyGetSpaceDataQuery();
@@ -84,6 +84,9 @@ const Search: FC = () => {
                                                     size={80}
                                                 />
                                             }
+                                            onPress={() => {
+                                                navigation.navigate("SpaceObject", { id: item.id });
+                                            }}
                                         />
                                     );
                                 })}
@@ -98,4 +101,4 @@ const Search: FC = () => {
     );
 };
 
-export default Search;
+export default SpaceObjects;

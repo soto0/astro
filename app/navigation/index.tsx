@@ -4,6 +4,7 @@ import Tabs from "./tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import New from "../components/screens/New";
 import ItemHeader from "../components/layout/header/itemHeader";
+import SpaceObject from "../components/screens/SpaceObject";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,13 @@ const Navigation: FC = () => {
                         header: (props) => <ItemHeader item={props} />
                     }}
                     component={New}
+                />
+                <Stack.Screen
+                    name="SpaceObject"
+                    options={{
+                        header: (props) => <ItemHeader item={props} />
+                    }}
+                    component={SpaceObject}
                 />
             </Stack.Navigator>
         </NavigationContainer>

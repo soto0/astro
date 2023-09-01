@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Search from "../components/screens/Search";
 import News from "../components/screens/News";
 import Map from "../components/screens/Map";
 import Weather from "../components/screens/Weather";
 import { Icon } from "@react-native-material/core";
+import SpaceObjects from "../components/screens/SpaceObjects";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,13 +18,13 @@ const Tabs: FC = () => {
             }}
         >
             <Tab.Screen
-                name="Поиск"
+                name="Космические объекты"
                 options={{
                     title: "",
                     tabBarActiveTintColor: "#8e8efa",
                     tabBarIcon: ({ color }) => <Icon name="text-search" size={30} color={color} />
                 }}
-                component={Search}
+                component={SpaceObjects}
             />
             <Tab.Screen
                 name="Новости"
