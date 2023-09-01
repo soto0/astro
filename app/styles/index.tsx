@@ -77,5 +77,20 @@ export const styles = StyleSheet.create({
     },
     newsChip: {
         marginBottom: 5
+    },
+    spaceObjectImage: {
+        width: "100%",
+        height: 250,
+        borderRadius: 5
+    },
+    spaceObjectInfoFlex: {
+        padding: 5,
+        paddingLeft: 20,
+        paddingRight: 20,
+        width: "100%"
+    },
+    spaceObjectInfoText: {
+        width: 230,
+        color: "white"
     }
 });

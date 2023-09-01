@@ -16,6 +16,13 @@ export const spaceObjectsAPI = createApi({
                     params: item
                 })
             }
-        )
+        ),
+        getSpaceObject: build.query<ISpaceObjects, number>({
+            query: (id) => ({
+                url: "space",
+                method: "GET",
+                params: { id: id }
+            })
+        })
     })
 });

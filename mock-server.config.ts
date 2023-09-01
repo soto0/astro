@@ -14,7 +14,23 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                                 viewType: "Галактика",
                                 name: "Млечный Путь",
                                 image: "https://images.ctfassets.net/cnu0m8re1exe/76iARqWFwf5VQeHcy7FsYB/75246efbd9ac79410b75b5c0211723ba/shutterstock_738535111.jpg",
-                                description: "Спиральная"
+                                description: "Спиральная галактика",
+                                text: "Млечный Путь - это наша домашняя галактика, в которой находится Солнечная система. Это спиральная галактика, которая состоит из миллиардов звезд, планет и межзвездного вещества. Млечный Путь виден на небе как светлая полоса и находится в созвездии Скорпиона. Расстояние от Солнца до Млечного Пути составляет около 27 000 световых лет.",
+                                tableInfo: [
+                                    { id: 1, title: "Тип", text: "Спиральная галактика" },
+                                    { id: 2, title: "Размер", text: "100 000 световых лет" },
+                                    { id: 3, title: "Совездие", text: "Скорпиона" },
+                                    {
+                                        id: 4,
+                                        title: "Расстояние до солнца",
+                                        text: "27 000 световых лет"
+                                    },
+                                    {
+                                        id: 5,
+                                        title: "Обозначения",
+                                        text: "Галактика Млечный Путь, Наша Галактика"
+                                    }
+                                ]
                             },
                             {
                                 id: 2,
@@ -22,7 +38,27 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                                 viewType: "Галактика",
                                 name: "Андромеда",
                                 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/800px-Andromeda_Galaxy_%28with_h-alpha%29.jpg",
-                                description: "Спиральная"
+                                description: "Спиральная галактика",
+                                text: "Андромеда - это ближайшая к нам спиральная галактика и она также является членом Местной группы галактик. Ее диаметр составляет около 220 000 световых лет. Андромеда находится в созвездии Андромеда и на расстоянии примерно в 2,5 миллиона световых лет от Солнца.",
+                                tableInfo: [
+                                    { id: 1, title: "Тип", text: "Спиральная галактика" },
+                                    {
+                                        id: 2,
+                                        title: "Размер",
+                                        text: "220 000 световых лет"
+                                    },
+                                    { id: 3, title: "Созвездие", text: "Андромеда" },
+                                    {
+                                        id: 4,
+                                        title: "Расстояние до солнца",
+                                        text: "2,5 миллиона световых лет"
+                                    },
+                                    {
+                                        id: 5,
+                                        title: "Обозначения",
+                                        text: "M31, NGC 224"
+                                    }
+                                ]
                             },
                             {
                                 id: 3,
@@ -30,7 +66,27 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                                 viewType: "Галактика",
                                 name: "Большое Магелланово Облако",
                                 image: "https://cdn.eso.org/images/screen/magellan-ch17-bardon-cc.jpg",
-                                description: "Неправильная"
+                                description: "Неправильная галактика",
+                                text: "Большое Магелланово Облако - это неправильная галактика, которая является спутником Млечного Пути. Ее диаметр составляет около 14 000 световых лет, и она находится в созвездии Дорадо, на расстоянии примерно в 160 000 световых лет от Солнца.",
+                                tableInfo: [
+                                    { id: 1, title: "Тип", text: "Неправильная галактика" },
+                                    {
+                                        id: 2,
+                                        title: "Размер",
+                                        text: "14 000 световых лет"
+                                    },
+                                    { id: 3, title: "Созвездие", text: "Дорадо" },
+                                    {
+                                        id: 4,
+                                        title: "Расстояние до солнца",
+                                        text: "160 000 световых лет"
+                                    },
+                                    {
+                                        id: 5,
+                                        title: "Обозначения",
+                                        text: "LMC, NGC 1976"
+                                    }
+                                ]
                             },
                             {
                                 id: 4,
@@ -38,8 +94,29 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                                 viewType: "Галактика",
                                 name: "Барнарда",
                                 image: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Barnard%27s_Galaxy.jpg",
-                                description: "Неправильная"
+                                description: "Неправильная галактика",
+                                text: "Барнарда - это неправильная галактика, которая находится в созвездии Золотая Рыба. Ее диаметр составляет около 60 000 световых лет, и она находится на расстоянии примерно в 180 000 световых лет от Солнца.",
+                                tableInfo: [
+                                    { id: 1, title: "Тип", text: "Неправильная галактика" },
+                                    {
+                                        id: 2,
+                                        title: "Размер",
+                                        text: "60 000 световых лет"
+                                    },
+                                    { id: 3, title: "Созвездие", text: "Золотая Рыба" },
+                                    {
+                                        id: 4,
+                                        title: "Расстояние до солнца",
+                                        text: "180 000 световых лет"
+                                    },
+                                    {
+                                        id: 5,
+                                        title: "Обозначения",
+                                        text: "NGC 6822"
+                                    }
+                                ]
                             },
+
                             {
                                 id: 5,
                                 type: "planet",
@@ -295,6 +372,8 @@ const mockServerConfig: import("mock-config-server").MockServerConfig = {
                     response: (data: Array<any>, { request }) => {
                         if (request.query.type) {
                             return data.filter((item) => item.type === request.query.type);
+                        } else if (request.query.id) {
+                            return data.find((item) => item.id === Number(request.query.id));
                         } else {
                             return data.filter((item) => item.name.includes(request.query.q));
                         }
