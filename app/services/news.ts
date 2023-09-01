@@ -8,13 +8,13 @@ export const newsAPI = createApi({
         baseUrl: SPACE_URL
     }),
     endpoints: (build) => ({
-        getNewsData: build.query<INews[], void>({
+        getNews: build.query<INews[], void>({
             query: () => ({
                 url: "news",
                 method: "GET"
             })
         }),
-        getNewData: build.query<INews, number>({
+        getNew: build.query<INews, number>({
             query: (id) => ({
                 url: "news",
                 method: "GET",
