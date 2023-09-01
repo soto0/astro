@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import { styles } from "../../styles";
 import SearchBar from "react-native-general-searchbar";
@@ -8,7 +8,12 @@ import Loader from "../ui/loader";
 
 const Search: FC = () => {
     const [value, setValue] = useState<string | undefined>();
+    const [chipType, setChipType] = useState<string>();
     const [trigger, { data: list, isLoading }] = spaceAPI.useLazyGetSpaceDataQuery();
+
+    useEffect(() => {
+        trigger({ q: "" });
+    }, []);
 
     const onChange = (values: string | undefined) => {
         setValue(values);
@@ -51,9 +56,11 @@ const Search: FC = () => {
                         {chips.map((item) => {
                             return (
                                 <Chip
+                                    key={item.id}
                                     label={item.name}
-                                    color="#9191ff"
+                                    color={chipType == item.type ? "#4545f7" : "#9191ff"}
                                     onPress={() => {
+                                        setChipType(item.type);
                                         onChipsSubmit({ type: item.type });
                                     }}
                                 />
@@ -66,6 +73,7 @@ const Search: FC = () => {
                                 {list?.map((item) => {
                                     return (
                                         <ListItem
+                                            key={item.id}
                                             overline={item?.viewType}
                                             title={item?.name}
                                             secondaryText={item?.description}

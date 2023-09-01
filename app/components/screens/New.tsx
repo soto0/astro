@@ -43,6 +43,7 @@ const New: FC = ({ route }: any) => {
                                 {item?.themes.map((item: IThemes) => {
                                     return (
                                         <Chip
+                                            key={item.id}
                                             label={item.label}
                                             color="#9191ff"
                                             labelStyle={styles.newsChipLabel}

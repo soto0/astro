@@ -15,6 +15,7 @@ const News: FC = ({ navigation }: any) => {
                         {list?.map((item) => {
                             return (
                                 <Pressable
+                                    key={item.id}
                                     onPress={() => {
                                         navigation.navigate("New", { id: item.id });
                                     }}
