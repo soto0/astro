@@ -6,7 +6,7 @@ import { styles } from "../../styles";
 import { IThemes } from "../../models/IThemes";
 
 const New: FC = ({ route }: any) => {
-    const { data: item } = newsAPI.useGetNewDataQuery(route.params.id);
+    const { data: item } = newsAPI.useGetNewQuery(route.params.id);
 
     return (
         <SafeAreaView style={styles.safeAreaView}>

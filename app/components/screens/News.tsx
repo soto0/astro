@@ -5,7 +5,7 @@ import { Wrap, Text, Box, VStack } from "@react-native-material/core";
 import { styles } from "../../styles";
 
 const News: FC = ({ navigation }: any) => {
-    const { data: list } = newsAPI.useGetNewsDataQuery();
+    const { data: list } = newsAPI.useGetNewsQuery();
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
